@@ -1,0 +1,266 @@
+/* 页面和地图全屏 */
+html,
+body,
+#map {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #0b1e3f;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* 季节按钮 */
+.season-buttons {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: rgba(15, 15, 30, 0.8);
+  border-radius: 8px;
+  padding: 5px 10px;
+  display: flex;
+  gap: 8px;
+}
+
+.season-buttons button {
+  background: #223366;
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.season-buttons button.active,
+.season-buttons button:hover {
+  background: #6633ff;
+}
+
+/* 图例 */
+#legend {
+  position: absolute;
+  top: 60px;
+  left: 50px;
+  z-index: 1000;
+  background: rgba(15, 15, 30, 0.8);
+  color: white;
+  font-weight: bold;
+  padding: 12px 18px;
+  /* 减小内边距 */
+  border-radius: 8px;
+  font-size: 12px;
+  /* 减小字体大小 */
+  width: 120px;
+  /* 减小宽度 */
+  user-select: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  /* 减小项之间的间距 */
+}
+
+#legend>div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.legend-color {
+  width: 16px;
+  /* 减小色块宽度 */
+  height: 12px;
+  /* 减小色块高度 */
+  margin-right: 8px;
+  /* 减小色块与文字之间的间距 */
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 3px;
+}
+
+/* 涟漪动画样式 */
+.ripple {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+
+.ripple .center-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border-radius: 50%;
+  background-color: var(--ripple-color);
+  box-shadow: 0 0 12px 3px var(--ripple-color);
+  z-index: 10;
+}
+
+.ripple .ripple-wave {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border: 2.5px solid var(--ripple-color);
+  opacity: 0.6;
+  animation: ripple-animation 3s infinite;
+  transform-origin: center;
+  z-index: 5;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+}
+
+.ripple .ripple-wave:nth-child(2) {
+  animation-delay: 1s;
+}
+
+.ripple .ripple-wave:nth-child(3) {
+  animation-delay: 2s;
+}
+
+@keyframes ripple-animation {
+  0% {
+    width: 16px;
+    height: 16px;
+    margin: -8px;
+    opacity: 0.6;
+  }
+
+  100% {
+    width: 64px;
+    height: 64px;
+    margin: -32px;
+    opacity: 0;
+  }
+}
+
+/* 涟漪标签样式 */
+.leaflet-tooltip.ripple-label {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  font-weight: bold;
+  font-size: 12px;
+  /* 减小字体大小 */
+  text-shadow: 0 0 6px var(--ripple-color), 0 0 12px var(--ripple-color);
+  user-select: none;
+}
+
+/* 年份选择器容器 */
+#year-selector-container {
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  background: rgba(15, 15, 30, 0.85);
+  color: white;
+  border-radius: 8px;
+  padding: 16px;
+  /* 减小内边距 */
+  width: 360px;
+  /* 减小宽度 */
+  z-index: 1100;
+  font-weight: bold;
+  user-select: none;
+  font-size: 14px;
+  /* 减小字体大小 */
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+}
+
+#year-selector-container label {
+  font-size: 14px;
+  /* 减小标签文字大小 */
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* 下拉框样式 */
+#year-select {
+  padding: 8px 10px;
+  /* 减小内边距 */
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+  /* 减小字体大小 */
+  background: #223366;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  /* 减小与折线图的距离 */
+}
+
+/* 下拉框交互状态 */
+#year-select:hover,
+#year-select:focus {
+  background: #6633ff;
+  outline: none;
+}
+
+/* 折线图canvas样式 */
+#line-chart {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  user-select: none;
+  width: 100% !important;
+  height: 280px !important;
+  /* 减小高度 */
+  border-radius: 6px;
+  background: #fff;
+  display: block;
+}
+
+/* 顶部导航栏样式 */
+.index-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0;
+  /* 减小内边距 */
+  z-index: 2000;
+  background-color: #f5f5f5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.index-item {
+  width: 20%;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  font-size: 14px;
+  /* 减小字体大小 */
+  background-color: #fff;
+  color: #333;
+  padding: 6px 0;
+  /* 减小内边距 */
+}
+
+.index-item:hover {
+  background-color: #eee;
+}
+
+.selected {
+  background-color: #e50716;
+  color: white;
+}
+
+/* 给主内容腾出导航栏的高度（假设导航栏高度为40px） */
+body {
+  padding-top: 40px;
+  box-sizing: border-box;
+}

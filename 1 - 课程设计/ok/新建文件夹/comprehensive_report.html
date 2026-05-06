@@ -1,0 +1,125 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>环境预测模型综合报告</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 40px; }
+                .header { background-color: #2E86AB; color: white; padding: 20px; text-align: center; }
+                .section { margin: 20px 0; padding: 15px; border-left: 4px solid #2E86AB; }
+                .metric { background-color: #f8f9fa; padding: 10px; margin: 5px 0; border-radius: 5px; }
+                .good { color: #28a745; }
+                .warning { color: #ffc107; }
+                .danger { color: #dc3545; }
+                table { border-collapse: collapse; width: 100%; }
+                th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                th { background-color: #f2f2f2; }
+            </style>
+        </head>
+        <body>
+            <div class="header">
+                <h1>环境预测模型综合报告</h1>
+                <p>生成时间: 2025-06-29 21:15:16</p>
+            </div>
+            
+            <div class="section">
+                <h2>模型概述</h2>
+                <p>本报告展示了多任务环境预测模型的详细性能评估结果，包括天气预测、风力预测、降水预测和污染物浓度预测。</p>
+            </div>
+            
+            <div class="section">
+                <h2>核心性能指标</h2>
+                <div class="metric">
+                    <strong>天气预测准确率:</strong> 
+                    <span class="danger">
+                        0.336
+                    </span>
+                </div>
+                <div class="metric">
+                    <strong>风力预测准确率:</strong> 
+                    <span class="good">
+                        0.918
+                    </span>
+                </div>
+                <div class="metric">
+                    <strong>降水预测 R²:</strong> 
+                    <span class="danger">
+                        -0.069
+                    </span>
+                </div>
+                <div class="metric">
+                    <strong>污染物预测 R²:</strong> 
+                    <span class="warning">
+                        0.596
+                    </span>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>详细污染物预测性能</h2>
+                <table>
+                    <tr><th>污染物</th><th>MAE</th><th>R²</th><th>性能等级</th></tr>
+        
+                    <tr>
+                        <td>SO2</td>
+                        <td>20.401</td>
+                        <td>-0.018</td>
+                        <td><span class="danger">需改进</span></td>
+                    </tr>
+            
+                    <tr>
+                        <td>NO2</td>
+                        <td>26.777</td>
+                        <td>-0.026</td>
+                        <td><span class="danger">需改进</span></td>
+                    </tr>
+            
+                    <tr>
+                        <td>PM10</td>
+                        <td>38.890</td>
+                        <td>-0.013</td>
+                        <td><span class="danger">需改进</span></td>
+                    </tr>
+            
+                    <tr>
+                        <td>CO</td>
+                        <td>23.305</td>
+                        <td>-0.003</td>
+                        <td><span class="danger">需改进</span></td>
+                    </tr>
+            
+                    <tr>
+                        <td>O31小时</td>
+                        <td>9.192</td>
+                        <td>-0.009</td>
+                        <td><span class="danger">需改进</span></td>
+                    </tr>
+            
+                    <tr>
+                        <td>O38小时</td>
+                        <td>11.921</td>
+                        <td>-0.006</td>
+                        <td><span class="danger">需改进</span></td>
+                    </tr>
+            
+                    <tr>
+                        <td>PM2.5</td>
+                        <td>64.113</td>
+                        <td>-0.080</td>
+                        <td><span class="danger">需改进</span></td>
+                    </tr>
+            
+                </table>
+            </div>
+            
+            <div class="section">
+                <h2>模型建议</h2>
+                <ul>
+        <li>天气预测准确率较低，建议增加更多气象特征或调整模型架构</li><li>降水预测性能有待提升，可能需要更多的时序特征</li>
+                    <li>定期重新训练模型以适应环境变化</li>
+                    <li>考虑集成多个模型以提高预测稳定性</li>
+                </ul>
+            </div>
+        </body>
+        </html>
+        

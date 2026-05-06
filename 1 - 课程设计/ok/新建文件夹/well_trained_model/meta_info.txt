@@ -1,0 +1,3 @@
+use_sequences=True
+sequence_length=24
+feature_names=纬度,经度,SO2,NO2,PM10,CO,O31小时,O38小时,PM2.5,污染程度,时间段,气温,sin_月,cos_月,sin_日,cos_日,sin_星期,cos_星期,污染物总和,污染物比例_SO2,污染物比例_NO2,污染物比例_PM10,污染物比例_CO,污染物比例_PM2.5

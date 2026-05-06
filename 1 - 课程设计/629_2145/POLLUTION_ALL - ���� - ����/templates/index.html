@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>西安市污染热力图</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Leaflet 地图 CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <!-- 自定义样式 -->
+  <link rel="stylesheet" href="static/css/style.css" />
+</head>
+<body>
+
+  <!-- 顶部导航栏 -->
+  <div class="index-box">
+    <button class="index-item selected" onclick="window.location.href='/'">时空分布</button>
+    <button class="index-item" onclick="window.location.href='/2'">影响因素</button>
+    <button class="index-item" onclick="window.location.href='/3'">未来预测</button>
+  </div>
+
+  <!-- 地图容器 -->
+  <div id="map"></div>
+
+  <!-- 季节按钮 -->
+  <div id="season-buttons" class="season-buttons">
+    <button data-season="春季">春季</button>
+    <button data-season="夏季">夏季</button>
+    <button data-season="秋季">秋季</button>
+    <button data-season="冬季">冬季</button>
+  </div>
+
+  <!-- 图例 -->
+  <div id="legend">
+    <h4>PM2.5浓度图例</h4>
+    <div><span class="legend-color" style="background:#00ff00"></span> 极低（<35）</div>
+    <div><span class="legend-color" style="background:#ffff00"></span> 低（35-75）</div>
+    <div><span class="legend-color" style="background:#ff9900"></span> 中（75-115）</div>
+    <div><span class="legend-color" style="background:#ff66cc"></span> 高（115-150）</div>
+    <div><span class="legend-color" style="background:#ff0000"></span> 极高（>150）</div>
+  </div>
+
+  <!-- 年份选择器和折线图 -->
+  <div id="year-selector-container">
+    <label for="year-select">选择年份：</label>
+    <select id="year-select">
+      <option value="2011">2011年</option>
+      <option value="2012">2012年</option>
+      <option value="2013">2013年</option>
+    </select>
+    <canvas id="line-chart" width="400" height="280"></canvas>
+  </div>
+
+  <!-- Leaflet 地图 & 工具库 -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.5.0/turf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@2.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+
+  <!-- 自定义脚本 -->
+  <script src="/static/js/script.js"></script>
+</body>
+</html>

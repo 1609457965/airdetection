@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>西安市污染物调查</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts-gl@2.0.8/dist/echarts-gl.min.js"></script>
+  <link rel="stylesheet" href="/static/css/pollutantHeatmap.css">
+</head>
+
+<body>
+  <div class="index-box">
+    <button class="index-item" onclick="window.location.href='/'">时空分布</button>
+    <button class="index-item" onclick="window.location.href='/2'">影响因素</button>
+    <button class="index-item selected" onclick="window.location.href='/3'">未来预测</button>
+  </div>
+
+  <nav class="weather-sidebar">
+    <div class="weather-date" id="weatherDate">📅 日期</div>
+    <div class="weather-item" data-weather="多云">☁️ 多云</div>
+    <div class="weather-item" data-weather="晴天">☀️ 晴天</div>
+    <div class="weather-item" data-weather="阴天">🌥️ 阴天</div>
+    <div class="weather-item" data-weather="雨">🌧️ 雨天</div>
+    <div class="weather-item" data-weather="雪">❄️ 雪天</div>
+    <div class="weather-item" data-weather="雾霾">🌫️ 雾霾</div>
+  </nav>
+
+  <div class="predict-btn-group">
+    <button onclick="predict(0)">预测 4.27</button>
+    <button onclick="predict(1)">预测 4.28</button>
+    <button onclick="predict(2)">预测 4.29</button>
+  </div>
+
+  <div class="wind-info-box" id="windInfoBox">
+    风力信息：暂无数据
+  </div>
+
+  <div style="display: flex; justify-content: center; align-items: center; height: 100%; width: 100%;">
+    <div id="main" style="width: 100%; height: 600px;"></div>
+  </div>
+
+  <script src="/static/js/pollutantHeatmap.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>西安市污染物调查</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      height: 100%;
+      overflow: hidden;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.day-mode {
+      background-image: url('static/1.jpg');
+      color: #000000;
+
+    }
+
+    body.night-mode {
+      background-image: url('static/2.jpg');
+      color: #ffffff;
+    }
+
+    .index-box {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      z-index: 999;
+      background-color: #f5f5f5;
+    }
+
+    .index-item {
+      width: 20%;
+      text-align: center;
+      cursor: pointer;
+      border: none;
+      font-size: 16px;
+      background-color: #fff;
+      color: #333;
+    }
+
+    .selected {
+      background-color: #f6b833;
+      color: white;
+    }
+
+    .main-container {
+      display: flex;
+      height: 100vh;
+      padding-top: 50px;
+      box-sizing: border-box;
+    }
+
+    .column {
+      flex: 1;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .thermometer-wrapper {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      position: relative;
+      width: 50%;
+      margin-top: -100px;
+      margin-left: -40px;
+    }
+
+    .thermometer {
+      width: 60px;
+      height: 85%;
+      border-radius: 30px;
+      position: relative;
+      background: linear-gradient(to top, blue, cyan, yellow, orange, red);
+    }
+
+    .thermometer-bulb {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      margin-top: -40px;
+      left: -15px;
+      position: absolute;
+      bottom: -30px;
+      background: radial-gradient(circle at center, red, orange, yellow);
+      z-index: 11;
+    }
+
+    .temp-zone {
+      position: absolute;
+      width: 100%;
+      cursor: pointer;
+      background-color: transparent;
+      z-index: 10;
+    }
+
+
+    .temp-zone:hover {
+      background-color: rgba(255, 255, 255, 0.53);
+    }
+
+    .zone-above-30 {
+      bottom: 80%;
+      height: 20%;
+    }
+
+    .zone-30-20 {
+      bottom: 60%;
+      height: 20%;
+    }
+
+    .zone-20-10 {
+      bottom: 40%;
+      height: 20%;
+    }
+
+    .zone-10-0 {
+      bottom: 20%;
+      height: 20%;
+    }
+
+    .zone-below-0 {
+      bottom: 0;
+      height: 20%;
+    }
+
+    .temp-label {
+      position: absolute;
+      left: calc(100% + 10px);
+      font-size: 14px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .label-above-30 {
+      bottom: 90%;
+    }
+
+    .label-30-20 {
+      bottom: 70%;
+    }
+
+    .label-20-10 {
+      bottom: 50%;
+    }
+
+    .label-10-0 {
+      bottom: 30%;
+    }
+
+    .label-below-0 {
+      bottom: 14%;
+    }
+
+    .weather-statistics {
+      position: absolute;
+      bottom: 500px;
+      right: 20px;
+      background-color: rgba(221, 221, 221, 0.66);
+      padding: 15px;
+      border-radius: 8px;
+      z-index: 10;
+      width: 240px;
+      height: 120px;
+      overflow: hidden;
+    }
+
+    body.night-mode .weather-statistics {
+      background-color: #333333a8;
+      color: #fff;
+    }
+
+    .weather-statistics h3 {
+      margin-top: 0;
+    }
+
+    .weather-grid {
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      gap: 10px 20px;
+    }
+
+    .weather-item {
+      display: flex;
+      align-items: center;
+      font-size: 20px;
+    }
+
+    .weather-emoji {
+      margin-right: 6px;
+    }
+
+    #mode-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    #mode-toggle button {
+      margin-left: 5px;
+      padding: 6px 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      background-color: rgb(146, 171, 233);
+      color: white;
+    }
+
+    .pie-mask {
+      position: absolute;
+      left: 43%;
+      transform: translateX(-50%);
+      width: 560px;
+      height: 680px;
+      background-color: rgba(255, 251, 251, 0.3);
+      /* 黑色透明遮罩，夜间可改白色 */
+      pointer-events: none;
+      /* 点击穿透遮罩，不阻碍交互 */
+      z-index: 1;
+      border-radius: 12px;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts-gl@2.0.9/dist/echarts-gl.min.js"></script>
+
+</head>
+
+<body class="day-mode">
+  <div class="index-box">
+    <button class="index-item" onclick="window.location.href='/'">时空分布</button>
+    <button class="index-item selected" onclick="window.location.href='/2'">影响因素</button>
+    <button class="index-item" onclick="window.location.href='/3'">未来预测</button>
+  </div>
+
+  <div class="main-container">
+    <div class="column">
+      <div class="thermometer-wrapper">
+        <div class="thermometer">
+          <div class="temp-zone zone-above-30" onclick="onTempZoneClick('above30')"></div>
+          <div class="temp-zone zone-30-20" onclick="onTempZoneClick('30-20')"></div>
+          <div class="temp-zone zone-20-10" onclick="onTempZoneClick('20-10')"></div>
+          <div class="temp-zone zone-10-0" onclick="onTempZoneClick('10-0')"></div>
+          <div class="temp-zone zone-below-0" onclick="onTempZoneClick('below0')"></div>
+
+          <div class="temp-label label-above-30">≥30°C</div>
+          <div class="temp-label label-30-20">30-20°C</div>
+          <div class="temp-label label-20-10">20-10°C</div>
+          <div class="temp-label label-10-0">10-0°C</div>
+          <div class="temp-label label-below-0">&lt;0°C</div>
+
+          <div class="thermometer-bulb"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="Pie" style="height: 1000px; width: 600px; top:50px;right:62px;z-index: 2;"></div>
+      <div class="pie-mask"></div>
+    </div>
+
+    <div class="column">
+      <div class="weather-statistics">
+        <h3>天气情况统计</h3>
+        <div class="weather-grid">
+          <div class="weather-item"><span class="weather-emoji">☁️</span><span id="cloudy">0</span></div>
+          <div class="weather-item"><span class="weather-emoji">☀️</span><span id="sunny">0</span></div>
+          <div class="weather-item"><span class="weather-emoji">🌥️</span><span id="overcast">0</span></div>
+          <div class="weather-item"><span class="weather-emoji">🌧️</span><span id="rainy">0</span></div>
+          <div class="weather-item"><span class="weather-emoji">❄️</span><span id="snow">0</span></div>
+          <div class="weather-item"><span class="weather-emoji">🌫️</span><span id="haze">0</span></div>
+        </div>
+      </div>
+      <div id="wind-chart" style="width: 420px; height: 380px; margin-top: 180px;position: absolute;left:-60px;"></div>
+    </div>
+  </div>
+
+  <div id="mode-toggle">
+    <button onclick="setMode('day')">🌞日间</button>
+    <button onclick="setMode('night')">🌙夜间</button>
+  </div>
+
+  <script>
+    // 天气统计数据
+    const weatherStats = {
+      day: {
+        above30: { cloudy: 123, sunny: 56, overcast: 37, rainy: 24, snow: 0, haze: 0 },
+        "30-20": { cloudy: 99, sunny: 69, overcast: 52, rainy: 93, snow: 0, haze: 0 },
+        "20-10": { cloudy: 69, sunny: 51, overcast: 34, rainy: 44, snow: 0, haze: 0 },
+        "10-0": { cloudy: 64, sunny: 49, overcast: 64, rainy: 17, snow: 19, haze: 1 },
+        below0: { cloudy: 0, sunny: 1, overcast: 1, rainy: 0, snow: 0, haze: 0 },
+      },
+      night: {
+        above30: { cloudy: 0, sunny: 0, overcast: 0, rainy: 0, snow: 0, haze: 0 },
+        "30-20": { cloudy: 87, sunny: 42, overcast: 54, rainy: 53, snow: 0, haze: 0 },
+        "20-10": { cloudy: 101, sunny: 74, overcast: 63, rainy: 68, snow: 0, haze: 0 },
+        "10-0": { cloudy: 75, sunny: 80, overcast: 72, rainy: 31, snow: 4, haze: 1 },
+        below0: { cloudy: 66, sunny: 50, overcast: 37, rainy: 0, snow: 9, haze: 0 },
+      },
+    };
+  
+    // 污染物名称映射
+    const nameMap = {
+      SO2: "SO₂",
+      NO2: "NO₂",
+      PM10: "PM₁₀",
+      CO: "CO",
+      O3_1h: "O₃(1h)",
+      O3_8h: "O₃(8h)",
+      PM25: "PM₂.₅",
+    };
+  
+    // 污染物单位映射
+    const unitMap = {
+      SO2: "µg/m³",
+      NO2: "µg/m³",
+      PM10: "µg/m³",
+      CO: "mg/m³",
+      O3_1h: "µg/m³",
+      O3_8h: "µg/m³",
+      PM25: "µg/m³",
+    };
+  
+    // 污染物浓度数据
+    const pollutantData = {
+      day: {
+        above30: { SO2: 62.37, NO2: 42.69, PM10: 114.46, CO: 0.78, O3_1h: 21.8, O3_8h: 20.65, PM25: 23.57 },
+        "30-20": { SO2: 34.74, NO2: 23.38, PM10: 89.5, CO: 0.42, O3_1h: 10.98, O3_8h: 12.44, PM25: 14.16 },
+        "20-10": { SO2: 18.77, NO2: 21.41, PM10: 45.36, CO: 0.29, O3_1h: 15.01, O3_8h: 13.17, PM25: 13.11 },
+        "10-0": { SO2: 10.33, NO2: 17.34, PM10: 30.23, CO: 0.22, O3_1h: 18.79, O3_8h: 16.45, PM25: 11.3 },
+        below0: { SO2: 5.69, NO2: 15.69, PM10: 15.44, CO: 0.1, O3_1h: 12.3, O3_8h: 10.58, PM25: 8.5 },
+      },
+      night: {
+        above30: { SO2: 58.1, NO2: 39.2, PM10: 108.7, CO: 0.75, O3_1h: 18.3, O3_8h: 17.2, PM25: 21.0 },
+        "30-20": { SO2: 32.5, NO2: 21.8, PM10: 82.1, CO: 0.40, O3_1h: 11.5, O3_8h: 11.7, PM25: 13.5 },
+        "20-10": { SO2: 16.5, NO2: 19.7, PM10: 42.8, CO: 0.27, O3_1h: 14.1, O3_8h: 12.3, PM25: 12.3 },
+        "10-0": { SO2: 9.7, NO2: 15.2, PM10: 28.4, CO: 0.20, O3_1h: 17.2, O3_8h: 15.0, PM25: 10.1 },
+        below0: { SO2: 4.8, NO2: 14.3, PM10: 14.1, CO: 0.08, O3_1h: 11.0, O3_8h: 9.3, PM25: 7.2 },
+      },
+    };
+  
+    let currentMode = "day";
+    let currentTempRange = "above30";
+  
+    // 初始化echarts实例
+    const myCharts = echarts.init(document.querySelector(".Pie"));
+  
+    // 生成3D饼图数据结构
+    function generatePieData(pollutantValues) {
+      const colorList = ["#00ffff", "#D8BFD8", "#006ced", "#ffe000", "#ffa800", "#ff5b00", "#ff3000"];
+      const keys = Object.keys(pollutantValues);
+      return keys.map((key, i) => ({
+        name: key,
+        value: pollutantValues[key],
+        itemStyle: { color: colorList[i] || "#ccc" },
+      }));
+    }
+  
+    // 3D饼图参数方程（保持不变）
+    function getParametricEquation(startRatio, endRatio, isSelected, isHovered, k, h) {
+      var midRatio = (startRatio + endRatio) / 2;
+      var startRadian = startRatio * Math.PI * 2;
+      var endRadian = endRatio * Math.PI * 2;
+      var midRadian = midRatio * Math.PI * 2;
+      isSelected = false;
+      k = typeof k !== "undefined" ? k : 1 / 3;
+      var offsetX = isSelected ? Math.sin(midRadian) * 0.1 : 0;
+      var offsetY = isSelected ? Math.cos(midRadian) * 0.1 : 0;
+      var hoverRate = isHovered ? 1.05 : 1;
+  
+      return {
+        u: { min: -Math.PI, max: Math.PI * 3, step: Math.PI / 32 },
+        v: { min: 0, max: Math.PI * 2, step: Math.PI / 20 },
+        x: function (u, v) {
+          if (u < startRadian) return offsetX + Math.cos(startRadian) * (1 + Math.cos(v) * k) * hoverRate;
+          if (u > endRadian) return offsetX + Math.cos(endRadian) * (1 + Math.cos(v) * k) * hoverRate;
+          return offsetX + Math.cos(u) * (1 + Math.cos(v) * k) * hoverRate;
+        },
+        y: function (u, v) {
+          if (u < startRadian) return offsetY + Math.sin(startRadian) * (1 + Math.cos(v) * k) * hoverRate;
+          if (u > endRadian) return offsetY + Math.sin(endRadian) * (1 + Math.cos(v) * k) * hoverRate;
+          return offsetY + Math.sin(u) * (1 + Math.cos(v) * k) * hoverRate;
+        },
+        z: function (u, v) {
+          return Math.sin(v) > 0 ? 1 * h * 0.1 : -1;
+        },
+      };
+    }
+  
+    function getPie3D(pieData, internalDiameterRatio, mode) {
+      var series = [];
+      var sumValue = pieData.reduce((sum, d) => sum + d.value, 0);
+      var startValue = 0;
+      var k = typeof internalDiameterRatio !== "undefined" ? (1 - internalDiameterRatio) / (1 + internalDiameterRatio) : 1 / 3;
+      var legendData = [];
+      var isNight = mode === "night";
+  
+      for (const element of pieData) {
+        var endValue = startValue + element.value;
+        var nameKey = element.name;
+        var pieItem = {
+          name: nameKey,
+          type: "surface",
+          parametric: true,
+          wireframe: { show: false },
+          pieData: {
+            ...element,
+            startRatio: startValue / sumValue,
+            endRatio: endValue / sumValue,
+          },
+          pieStatus: { selected: false, hovered: false, k: 1 / 10 },
+          parametricEquation: getParametricEquation(
+            startValue / sumValue,
+            endValue / sumValue,
+            false,
+            false,
+            k,
+            element.value
+          ),
+          itemStyle: element.itemStyle,
+          label: {
+            show: true,
+            position: "outside",
+            formatter: function () {
+              const key = this.name;
+              const name = nameMap[key] || key;
+              const unit = unitMap[key] || "";
+              return `${name}: ${this.value} ${unit}`;
+            },
+            textStyle: {
+              color: isNight ? "#fff" : "#000",
+            },
+          },
+          tooltip: {
+            show: true,
+            formatter: function (params) {
+              const key = params.seriesName;
+              const name = nameMap[key] || key;
+              const unit = unitMap[key] || "";
+              const tempLabelMap = {
+                above30: "高于30°C",
+                "30-20": "30~20°C",
+                "20-10": "20~10°C",
+                "10-0": "10~0°C",
+                below0: "低于0°C",
+              };
+              const tempLabel = tempLabelMap[currentTempRange] || currentTempRange;
+              const modeLabel = currentMode === "day" ? "白天" : "夜间";
+          
+              return `${name} ${unit}<br/>
+          时段: ${modeLabel}<br/>
+          温度区间: ${tempLabel}`;
+            },
+          },
+          
+        };
+        startValue = endValue;
+        legendData.push({
+          name: pieItem.name,
+          value: pieItem.pieData.value,
+        });
+        series.push(pieItem);
+      }
+  
+      // 底部透明圆盘
+      series.push({
+        name: "bottom",
+        type: "surface",
+        parametric: true,
+        wireframe: { show: false },
+        itemStyle: {
+          opacity: 0.2,
+          color: "rgba(165, 247, 253, 1)",
+        },
+        parametricEquation: {
+          u: { min: 0, max: Math.PI * 2, step: Math.PI / 20 },
+          v: { min: 0, max: Math.PI / 4, step: Math.PI / 20 },
+          x: function (u, v) {
+            return ((Math.sin(v) * Math.sin(u) + Math.sin(u)) / Math.PI) * 2.5;
+          },
+          y: function (u, v) {
+            return ((Math.sin(v) * Math.cos(u) + Math.cos(u)) / Math.PI) * 2.5;
+          },
+          z: function () {
+            return -3;
+          },
+        },
+        tooltip: { show: false },
+      });
+  
+      return {
+        tooltip: { show: false }, // 关闭全局tooltip，单独用series.tooltip
+        title: {
+          text: "空气质量污染物指标浓度分布",
+          top: "15%",
+          left: "30%",
+          textStyle: {
+            color: isNight ? "#fff" : "#000",
+            fontSize: 20,
+          },
+        },
+        legend: {
+          show: true,
+          icon: "circle",
+          orient: "horizontal",
+          data: legendData,
+          left: "15%",
+          top: "20%",
+          itemGap: 11,
+          itemWidth: 50,
+          itemHeight: 28,
+          textStyle: {
+            color: isNight ? "#fff" : "#000",
+          },
+          formatter: function (name) {
+            const key = name;
+            const displayName = nameMap[key] || key;
+            const unit = unitMap[key] || "";
+            const item = legendData.find((i) => i.name === name);
+            if (item) {
+              return `${displayName}\n${item.value} ${unit}`;
+            }
+            return "";
+          },
+        },
+        xAxis3D: {},
+        yAxis3D: {},
+        zAxis3D: {},
+        grid3D: {
+          viewControl: {
+            autoRotate: true,
+          },
+          bottom: "80%",
+          left: "7%",
+          width: "95%",
+          show: false,
+          boxHeight: 50,
+          boxWidth: 120,
+          boxDepth: 120,
+        },
+        series: series,
+      };
+    }
+  
+    // 更新天气统计UI
+    function updateWeatherStats(mode, tempRange) {
+      const data = weatherStats[mode][tempRange];
+      document.getElementById("cloudy").textContent = data.cloudy;
+      document.getElementById("sunny").textContent = data.sunny;
+      document.getElementById("overcast").textContent = data.overcast;
+      document.getElementById("rainy").textContent = data.rainy;
+      document.getElementById("snow").textContent = data.snow;
+      document.getElementById("haze").textContent = data.haze;
+    }
+  
+    // 更新3D饼图数据
+    function updatePieChart(mode, tempRange) {
+      const pieData = generatePieData(pollutantData[mode][tempRange]);
+      const option = getPie3D(pieData, 0.7, mode);
+      myCharts.setOption(option);
+    }
+  
+    // 温度区间点击事件
+    function onTempZoneClick(range) {
+      currentTempRange = range;
+      updateWeatherStats(currentMode, currentTempRange);
+      updatePieChart(currentMode, currentTempRange);
+    }
+  
+    // 切换日夜模式
+    function setMode(mode) {
+      currentMode = mode;
+      document.body.className = mode + "-mode";
+  
+      // 更新按钮选中状态
+      document.querySelectorAll("#mode-toggle button").forEach((btn) => {
+        btn.style.backgroundColor = "rgb(146, 171, 233)";
+        btn.style.color = "white";
+      });
+      if (mode === "day") {
+        document.querySelector("#mode-toggle button:nth-child(1)").style.backgroundColor = "#f6b833";
+        document.querySelector("#mode-toggle button:nth-child(1)").style.color = "#000";
+      } else {
+        document.querySelector("#mode-toggle button:nth-child(2)").style.backgroundColor = "#f6b833";
+        document.querySelector("#mode-toggle button:nth-child(2)").style.color = "#000";
+      }
+  
+      updateWeatherStats(currentMode, currentTempRange);
+      updatePieChart(currentMode, currentTempRange);
+    }
+  
+    window.onload = () => {
+      setMode("day");
+      updateWeatherStats(currentMode, currentTempRange);
+      updatePieChart(currentMode, currentTempRange);
+    };
+  
+    window.onresize = () => {
+      myCharts.resize();
+    };
+  </script>
+  
+  <script>
+    // 加载风向风力数据
+    let windData = {};
+
+    fetch("static/wind_season_data.json")
+      .then((res) => res.json())
+      .then((data) => {
+        windData = data;
+        drawWindBubbleChart(); // 初始绘图
+      });
+
+    const windChart = echarts.init(document.getElementById("wind-chart"));
+
+    const seasonColorMap = {
+      春: "#ff69b4", // 粉色
+      夏: "#00cc66", // 绿色
+      秋: "#f4c542", // 黄色
+      冬: "rgb(96, 154, 255)", // 灰蓝色
+    };
+
+    function drawWindBubbleChart() {
+      const entries = windData[currentMode]?.[currentTempRange] || [];
+
+      const bubbleData = entries
+        .map((item) => {
+          const forceIndex = convertForce(item.force);
+          const directionIndex = convertDirection(item.direction);
+          if (forceIndex === -1 || directionIndex === -1) return null; // 过滤非法项
+          return {
+            name: item.direction + " " + item.force,
+            value: [forceIndex, directionIndex, item.count],
+            itemStyle: {
+              color: seasonColorMap[item.season],
+              shadowBlur: 20,
+              shadowColor: seasonColorMap[item.season],
+              shadowOffsetX: 0,
+              shadowOffsetY: 0,
+              opacity: 0.7
+            },
+            
+          };
+        })
+        .filter((d) => d !== null); // 只保留合法项
+
+
+        const option = {
+          title: {
+            text: "风向风力统计气泡图",
+            left: "center",
+            textStyle: {
+              color: currentMode === "night" ? "#fff" : "#000",
+              fontSize: 16,
+            },
+          },
+          tooltip: {
+            formatter: (param) => {
+              return `风向: ${convertIndexToDirection(param.value[1])}<br/>
+                      风力: ${convertIndexToForce(param.value[0])}<br/>
+                      天数: ${param.value[2]}<br/>
+                      季节: ${getSeasonByColor(param.color)}`;
+            },
+          },
+          grid: {
+            right: "18%",    
+            containLabel: true,
+            width: "80%",   
+          },
+          xAxis: {
+            type: "category",
+            name: "风力",
+            nameTextStyle: {
+              color: currentMode === "night" ? "#fff" : "#000",
+            },
+            axisLabel: {
+              formatter: convertIndexToForce,
+              
+              color: currentMode === "night" ? "#fff" : "#000",
+            },
+            data: [0, 1, 2, 3, 4],
+          },
+          yAxis: {
+            type: "category",
+            name: "风向",
+            nameTextStyle: {
+              color: currentMode === "night" ? "#fff" : "#000",
+            },
+            axisLabel: {
+              formatter: convertIndexToDirection,
+              color: currentMode === "night" ? "#fff" : "#000",
+            },
+            data: Array.from({ length: 10 }, (_, i) => i),
+          },
+          series: [
+            {
+              type: "scatter",
+              symbolSize: (val) => Math.sqrt(val[2]) * 2,
+              data: bubbleData,
+              emphasis: {
+                scale: true,
+              },
+              itemStyle: {
+                shadowBlur: 20,
+                shadowColor: "rgba(0, 0, 0, 0.3)",
+                shadowOffsetX: 0,
+                shadowOffsetY: 0,
+                opacity: 0.9,
+              },
+            },
+          ],
+          
+        };
+        
+        windChart.setOption(option);
+        
+    }
+
+    // 工具函数
+    const forceMap = ["微风", "≤3级", "3-4级", "4-5级", "5-6级"];
+    const directionMap = [
+      "北风",
+      "东北风",
+      "东风",
+      "东南风",
+      "南风",
+      "西南风",
+      "西风",
+      "西北风",
+      "无持续",
+      "旋转风",
+    ];
+
+    function convertForce(force) {
+      return forceMap.indexOf(force);
+    }
+
+    function convertDirection(direction) {
+      return directionMap.indexOf(direction);
+    }
+
+    function convertIndexToForce(index) {
+      return forceMap[index] || "";
+    }
+
+    function convertIndexToDirection(index) {
+      return directionMap[index] || "";
+    }
+
+    function getSeasonByColor(color) {
+      return (
+        Object.keys(seasonColorMap).find(
+          (season) => seasonColorMap[season] === color
+        ) || "未知"
+      );
+    }
+
+    // 切换模式或温度时刷新气泡图
+    function updateWindChart() {
+      drawWindBubbleChart();
+    }
+
+    // 替换 setMode 和 onTempZoneClick 函数里的更新调用
+    const originalSetMode = setMode;
+    setMode = function (mode) {
+      originalSetMode(mode);
+      updateWindChart();
+    };
+
+    const originalOnTempZoneClick = onTempZoneClick;
+    onTempZoneClick = function (range) {
+      originalOnTempZoneClick(range);
+      updateWindChart();
+    };
+  </script>
+
+</body>
+
+</html>

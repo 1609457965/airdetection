@@ -1,0 +1,1236 @@
+{
+  "day": {
+    "below0": [
+      {
+        "direction": "东北风",
+        "force": "≤3级",
+        "count": 51,
+        "season": "冬"
+      },
+      {
+        "direction": "东风",
+        "force": "≤3级",
+        "count": 195,
+        "season": "冬"
+      },
+      {
+        "direction": "东风",
+        "force": "≤3级",
+        "count": 13,
+        "season": "秋"
+      },
+      {
+        "direction": "北风",
+        "force": "3-4级",
+        "count": 36,
+        "season": "冬"
+      },
+      {
+        "direction": "北风",
+        "force": "≤3级",
+        "count": 50,
+        "season": "冬"
+      },
+      {
+        "direction": "南风",
+        "force": "≤3级",
+        "count": 38,
+        "season": "冬"
+      },
+      {
+        "direction": "旋转风",
+        "force": "微风",
+        "count": 66,
+        "season": "冬"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "≤3级",
+        "count": 844,
+        "season": "冬"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "≤3级",
+        "count": 13,
+        "season": "秋"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "微风",
+        "count": 365,
+        "season": "冬"
+      },
+      {
+        "direction": "西北风",
+        "force": "≤3级",
+        "count": 52,
+        "season": "冬"
+      },
+      {
+        "direction": "西南风",
+        "force": "≤3级",
+        "count": 71,
+        "season": "冬"
+      },
+      {
+        "direction": "西风",
+        "force": "3-4级",
+        "count": 26,
+        "season": "冬"
+      },
+      {
+        "direction": "西风",
+        "force": "≤3级",
+        "count": 134,
+        "season": "冬"
+      },
+      {
+        "direction": "西风",
+        "force": "≤3级",
+        "count": 13,
+        "season": "秋"
+      }
+    ],
+    "10-0": [
+      {
+        "direction": "东北风",
+        "force": "3-4级",
+        "count": 36,
+        "season": "春"
+      },
+      {
+        "direction": "东北风",
+        "force": "4-5级",
+        "count": 13,
+        "season": "秋"
+      },
+      {
+        "direction": "东北风",
+        "force": "≤3级",
+        "count": 39,
+        "season": "春"
+      },
+      {
+        "direction": "东北风",
+        "force": "≤3级",
+        "count": 13,
+        "season": "秋"
+      },
+      {
+        "direction": "东南风",
+        "force": "≤3级",
+        "count": 12,
+        "season": "冬"
+      },
+      {
+        "direction": "东南风",
+        "force": "≤3级",
+        "count": 13,
+        "season": "春"
+      },
+      {
+        "direction": "东南风",
+        "force": "≤3级",
+        "count": 26,
+        "season": "秋"
+      },
+      {
+        "direction": "东风",
+        "force": "3-4级",
+        "count": 24,
+        "season": "冬"
+      },
+      {
+        "direction": "东风",
+        "force": "3-4级",
+        "count": 13,
+        "season": "春"
+      },
+      {
+        "direction": "东风",
+        "force": "≤3级",
+        "count": 37,
+        "season": "冬"
+      },
+      {
+        "direction": "东风",
+        "force": "≤3级",
+        "count": 152,
+        "season": "春"
+      },
+      {
+        "direction": "东风",
+        "force": "≤3级",
+        "count": 90,
+        "season": "秋"
+      },
+      {
+        "direction": "北风",
+        "force": "3-4级",
+        "count": 51,
+        "season": "春"
+      },
+      {
+        "direction": "北风",
+        "force": "3-4级",
+        "count": 39,
+        "season": "秋"
+      },
+      {
+        "direction": "北风",
+        "force": "≤3级",
+        "count": 72,
+        "season": "春"
+      },
+      {
+        "direction": "北风",
+        "force": "≤3级",
+        "count": 78,
+        "season": "秋"
+      },
+      {
+        "direction": "南风",
+        "force": "≤3级",
+        "count": 25,
+        "season": "冬"
+      },
+      {
+        "direction": "南风",
+        "force": "≤3级",
+        "count": 11,
+        "season": "春"
+      },
+      {
+        "direction": "南风",
+        "force": "≤3级",
+        "count": 52,
+        "season": "秋"
+      },
+      {
+        "direction": "旋转风",
+        "force": "微风",
+        "count": 33,
+        "season": "冬"
+      },
+      {
+        "direction": "旋转风",
+        "force": "微风",
+        "count": 11,
+        "season": "春"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "≤3级",
+        "count": 260,
+        "season": "冬"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "≤3级",
+        "count": 511,
+        "season": "春"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "≤3级",
+        "count": 453,
+        "season": "秋"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "微风",
+        "count": 1538,
+        "season": "冬"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "微风",
+        "count": 1012,
+        "season": "夏"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "微风",
+        "count": 1309,
+        "season": "春"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "微风",
+        "count": 1012,
+        "season": "秋"
+      },
+      {
+        "direction": "西北风",
+        "force": "3-4级",
+        "count": 12,
+        "season": "冬"
+      },
+      {
+        "direction": "西北风",
+        "force": "3-4级",
+        "count": 48,
+        "season": "春"
+      },
+      {
+        "direction": "西北风",
+        "force": "3-4级",
+        "count": 13,
+        "season": "秋"
+      },
+      {
+        "direction": "西北风",
+        "force": "≤3级",
+        "count": 34,
+        "season": "春"
+      },
+      {
+        "direction": "西北风",
+        "force": "≤3级",
+        "count": 26,
+        "season": "秋"
+      },
+      {
+        "direction": "西南风",
+        "force": "3-4级",
+        "count": 11,
+        "season": "春"
+      },
+      {
+        "direction": "西南风",
+        "force": "4-5级",
+        "count": 12,
+        "season": "秋"
+      },
+      {
+        "direction": "西南风",
+        "force": "≤3级",
+        "count": 13,
+        "season": "冬"
+      },
+      {
+        "direction": "西南风",
+        "force": "≤3级",
+        "count": 60,
+        "season": "春"
+      },
+      {
+        "direction": "西南风",
+        "force": "≤3级",
+        "count": 65,
+        "season": "秋"
+      },
+      {
+        "direction": "西风",
+        "force": "3-4级",
+        "count": 13,
+        "season": "春"
+      },
+      {
+        "direction": "西风",
+        "force": "3-4级",
+        "count": 13,
+        "season": "秋"
+      },
+      {
+        "direction": "西风",
+        "force": "≤3级",
+        "count": 24,
+        "season": "冬"
+      },
+      {
+        "direction": "西风",
+        "force": "≤3级",
+        "count": 59,
+        "season": "春"
+      },
+      {
+        "direction": "西风",
+        "force": "≤3级",
+        "count": 104,
+        "season": "秋"
+      }
+    ],
+    "20-10": [
+      {
+        "direction": "东北风",
+        "force": "≤3级",
+        "count": 39,
+        "season": "春"
+      },
+      {
+        "direction": "东北风",
+        "force": "≤3级",
+        "count": 26,
+        "season": "秋"
+      },
+      {
+        "direction": "东南风",
+        "force": "≤3级",
+        "count": 13,
+        "season": "春"
+      },
+      {
+        "direction": "东南风",
+        "force": "≤3级",
+        "count": 13,
+        "season": "秋"
+      },
+      {
+        "direction": "东风",
+        "force": "3-4级",
+        "count": 12,
+        "season": "春"
+      },
+      {
+        "direction": "东风",
+        "force": "5-6级",
+        "count": 13,
+        "season": "春"
+      },
+      {
+        "direction": "东风",
+        "force": "≤3级",
+        "count": 62,
+        "season": "春"
+      },
+      {
+        "direction": "东风",
+        "force": "≤3级",
+        "count": 104,
+        "season": "秋"
+      },
+      {
+        "direction": "北风",
+        "force": "3-4级",
+        "count": 22,
+        "season": "春"
+      },
+      {
+        "direction": "北风",
+        "force": "3-4级",
+        "count": 12,
+        "season": "秋"
+      },
+      {
+        "direction": "北风",
+        "force": "≤3级",
+        "count": 13,
+        "season": "夏"
+      },
+      {
+        "direction": "北风",
+        "force": "≤3级",
+        "count": 52,
+        "season": "春"
+      },
+      {
+        "direction": "北风",
+        "force": "≤3级",
+        "count": 26,
+        "season": "秋"
+      },
+      {
+        "direction": "南风",
+        "force": "≤3级",
+        "count": 38,
+        "season": "春"
+      },
+      {
+        "direction": "南风",
+        "force": "≤3级",
+        "count": 39,
+        "season": "秋"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "≤3级",
+        "count": 439,
+        "season": "夏"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "≤3级",
+        "count": 1028,
+        "season": "春"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "≤3级",
+        "count": 871,
+        "season": "秋"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "微风",
+        "count": 48,
+        "season": "春"
+      },
+      {
+        "direction": "西北风",
+        "force": "3-4级",
+        "count": 38,
+        "season": "春"
+      },
+      {
+        "direction": "西北风",
+        "force": "≤3级",
+        "count": 13,
+        "season": "春"
+      },
+      {
+        "direction": "西北风",
+        "force": "≤3级",
+        "count": 39,
+        "season": "秋"
+      },
+      {
+        "direction": "西南风",
+        "force": "≤3级",
+        "count": 13,
+        "season": "春"
+      },
+      {
+        "direction": "西南风",
+        "force": "≤3级",
+        "count": 39,
+        "season": "秋"
+      },
+      {
+        "direction": "西风",
+        "force": "3-4级",
+        "count": 11,
+        "season": "春"
+      },
+      {
+        "direction": "西风",
+        "force": "3-4级",
+        "count": 13,
+        "season": "秋"
+      },
+      {
+        "direction": "西风",
+        "force": "4-5级",
+        "count": 13,
+        "season": "春"
+      },
+      {
+        "direction": "西风",
+        "force": "≤3级",
+        "count": 25,
+        "season": "春"
+      },
+      {
+        "direction": "西风",
+        "force": "≤3级",
+        "count": 52,
+        "season": "秋"
+      }
+    ],
+    "30-20": [
+      {
+        "direction": "东北风",
+        "force": "≤3级",
+        "count": 52,
+        "season": "夏"
+      },
+      {
+        "direction": "东风",
+        "force": "≤3级",
+        "count": 78,
+        "season": "夏"
+      },
+      {
+        "direction": "北风",
+        "force": "≤3级",
+        "count": 90,
+        "season": "夏"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "≤3级",
+        "count": 1526,
+        "season": "夏"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "≤3级",
+        "count": 49,
+        "season": "春"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "≤3级",
+        "count": 37,
+        "season": "秋"
+      },
+      {
+        "direction": "西北风",
+        "force": "3-4级",
+        "count": 12,
+        "season": "春"
+      },
+      {
+        "direction": "西南风",
+        "force": "3-4级",
+        "count": 12,
+        "season": "夏"
+      },
+      {
+        "direction": "西南风",
+        "force": "≤3级",
+        "count": 13,
+        "season": "夏"
+      },
+      {
+        "direction": "西风",
+        "force": "3-4级",
+        "count": 12,
+        "season": "夏"
+      },
+      {
+        "direction": "西风",
+        "force": "≤3级",
+        "count": 90,
+        "season": "夏"
+      }
+    ],
+    "above30": [{
+      "direction": "西风",
+      "force": "微风",
+      "count": 200,
+      "season": "夏"
+    }]
+  },
+  "night": {
+    "below0": [
+      {
+        "direction": "旋转风",
+        "force": "微风",
+        "count": 11,
+        "season": "冬"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "≤3级",
+        "count": 13,
+        "season": "冬"
+      }
+    ],
+    "10-0": [
+      {
+        "direction": "东北风",
+        "force": "3-4级",
+        "count": 33,
+        "season": "冬"
+      },
+      {
+        "direction": "东北风",
+        "force": "3-4级",
+        "count": 13,
+        "season": "秋"
+      },
+      {
+        "direction": "东北风",
+        "force": "≤3级",
+        "count": 85,
+        "season": "冬"
+      },
+      {
+        "direction": "东风",
+        "force": "3-4级",
+        "count": 11,
+        "season": "冬"
+      },
+      {
+        "direction": "东风",
+        "force": "≤3级",
+        "count": 180,
+        "season": "冬"
+      },
+      {
+        "direction": "北风",
+        "force": "3-4级",
+        "count": 62,
+        "season": "冬"
+      },
+      {
+        "direction": "北风",
+        "force": "3-4级",
+        "count": 11,
+        "season": "春"
+      },
+      {
+        "direction": "北风",
+        "force": "3-4级",
+        "count": 26,
+        "season": "秋"
+      },
+      {
+        "direction": "北风",
+        "force": "≤3级",
+        "count": 37,
+        "season": "冬"
+      },
+      {
+        "direction": "北风",
+        "force": "≤3级",
+        "count": 13,
+        "season": "秋"
+      },
+      {
+        "direction": "南风",
+        "force": "≤3级",
+        "count": 62,
+        "season": "冬"
+      },
+      {
+        "direction": "旋转风",
+        "force": "微风",
+        "count": 497,
+        "season": "冬"
+      },
+      {
+        "direction": "旋转风",
+        "force": "微风",
+        "count": 66,
+        "season": "春"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "≤3级",
+        "count": 1079,
+        "season": "冬"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "≤3级",
+        "count": 129,
+        "season": "春"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "≤3级",
+        "count": 39,
+        "season": "秋"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "微风",
+        "count": 1373,
+        "season": "冬"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "微风",
+        "count": 1012,
+        "season": "夏"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "微风",
+        "count": 1010,
+        "season": "春"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "微风",
+        "count": 1012,
+        "season": "秋"
+      },
+      {
+        "direction": "西北风",
+        "force": "3-4级",
+        "count": 13,
+        "season": "冬"
+      },
+      {
+        "direction": "西北风",
+        "force": "3-4级",
+        "count": 11,
+        "season": "春"
+      },
+      {
+        "direction": "西北风",
+        "force": "3-4级",
+        "count": 14,
+        "season": "秋"
+      },
+      {
+        "direction": "西北风",
+        "force": "≤3级",
+        "count": 25,
+        "season": "冬"
+      },
+      {
+        "direction": "西南风",
+        "force": "≤3级",
+        "count": 25,
+        "season": "冬"
+      },
+      {
+        "direction": "西风",
+        "force": "≤3级",
+        "count": 164,
+        "season": "冬"
+      },
+      {
+        "direction": "西风",
+        "force": "≤3级",
+        "count": 13,
+        "season": "秋"
+      }
+    ],
+    "20-10": [
+      {
+        "direction": "东北风",
+        "force": "3-4级",
+        "count": 11,
+        "season": "春"
+      },
+      {
+        "direction": "东北风",
+        "force": "4-5级",
+        "count": 13,
+        "season": "秋"
+      },
+      {
+        "direction": "东北风",
+        "force": "≤3级",
+        "count": 37,
+        "season": "冬"
+      },
+      {
+        "direction": "东北风",
+        "force": "≤3级",
+        "count": 60,
+        "season": "春"
+      },
+      {
+        "direction": "东北风",
+        "force": "≤3级",
+        "count": 26,
+        "season": "秋"
+      },
+      {
+        "direction": "东南风",
+        "force": "≤3级",
+        "count": 13,
+        "season": "秋"
+      },
+      {
+        "direction": "东风",
+        "force": "3-4级",
+        "count": 12,
+        "season": "春"
+      },
+      {
+        "direction": "东风",
+        "force": "5-6级",
+        "count": 12,
+        "season": "春"
+      },
+      {
+        "direction": "东风",
+        "force": "≤3级",
+        "count": 13,
+        "season": "冬"
+      },
+      {
+        "direction": "东风",
+        "force": "≤3级",
+        "count": 83,
+        "season": "春"
+      },
+      {
+        "direction": "东风",
+        "force": "≤3级",
+        "count": 51,
+        "season": "秋"
+      },
+      {
+        "direction": "北风",
+        "force": "3-4级",
+        "count": 39,
+        "season": "春"
+      },
+      {
+        "direction": "北风",
+        "force": "≤3级",
+        "count": 24,
+        "season": "冬"
+      },
+      {
+        "direction": "北风",
+        "force": "≤3级",
+        "count": 50,
+        "season": "春"
+      },
+      {
+        "direction": "北风",
+        "force": "≤3级",
+        "count": 78,
+        "season": "秋"
+      },
+      {
+        "direction": "南风",
+        "force": "≤3级",
+        "count": 23,
+        "season": "春"
+      },
+      {
+        "direction": "南风",
+        "force": "≤3级",
+        "count": 78,
+        "season": "秋"
+      },
+      {
+        "direction": "旋转风",
+        "force": "微风",
+        "count": 99,
+        "season": "冬"
+      },
+      {
+        "direction": "旋转风",
+        "force": "微风",
+        "count": 231,
+        "season": "春"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "≤3级",
+        "count": 13,
+        "season": "冬"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "≤3级",
+        "count": 279,
+        "season": "春"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "≤3级",
+        "count": 666,
+        "season": "秋"
+      },
+      {
+        "direction": "西北风",
+        "force": "3-4级",
+        "count": 12,
+        "season": "冬"
+      },
+      {
+        "direction": "西北风",
+        "force": "3-4级",
+        "count": 13,
+        "season": "秋"
+      },
+      {
+        "direction": "西北风",
+        "force": "≤3级",
+        "count": 65,
+        "season": "秋"
+      },
+      {
+        "direction": "西南风",
+        "force": "3-4级",
+        "count": 13,
+        "season": "秋"
+      },
+      {
+        "direction": "西南风",
+        "force": "≤3级",
+        "count": 38,
+        "season": "冬"
+      },
+      {
+        "direction": "西南风",
+        "force": "≤3级",
+        "count": 34,
+        "season": "春"
+      },
+      {
+        "direction": "西南风",
+        "force": "≤3级",
+        "count": 39,
+        "season": "秋"
+      },
+      {
+        "direction": "西风",
+        "force": "4-5级",
+        "count": 13,
+        "season": "春"
+      },
+      {
+        "direction": "西风",
+        "force": "≤3级",
+        "count": 13,
+        "season": "春"
+      },
+      {
+        "direction": "西风",
+        "force": "≤3级",
+        "count": 130,
+        "season": "秋"
+      }
+    ],
+    "30-20": [
+      {
+        "direction": "东北风",
+        "force": "≤3级",
+        "count": 13,
+        "season": "夏"
+      },
+      {
+        "direction": "东北风",
+        "force": "≤3级",
+        "count": 59,
+        "season": "春"
+      },
+      {
+        "direction": "东北风",
+        "force": "≤3级",
+        "count": 26,
+        "season": "秋"
+      },
+      {
+        "direction": "东风",
+        "force": "≤3级",
+        "count": 39,
+        "season": "夏"
+      },
+      {
+        "direction": "东风",
+        "force": "≤3级",
+        "count": 126,
+        "season": "春"
+      },
+      {
+        "direction": "东风",
+        "force": "≤3级",
+        "count": 78,
+        "season": "秋"
+      },
+      {
+        "direction": "北风",
+        "force": "3-4级",
+        "count": 46,
+        "season": "春"
+      },
+      {
+        "direction": "北风",
+        "force": "3-4级",
+        "count": 12,
+        "season": "秋"
+      },
+      {
+        "direction": "北风",
+        "force": "≤3级",
+        "count": 12,
+        "season": "春"
+      },
+      {
+        "direction": "北风",
+        "force": "≤3级",
+        "count": 13,
+        "season": "秋"
+      },
+      {
+        "direction": "南风",
+        "force": "3-4级",
+        "count": 13,
+        "season": "春"
+      },
+      {
+        "direction": "南风",
+        "force": "≤3级",
+        "count": 39,
+        "season": "秋"
+      },
+      {
+        "direction": "旋转风",
+        "force": "微风",
+        "count": 72,
+        "season": "春"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "≤3级",
+        "count": 729,
+        "season": "夏"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "≤3级",
+        "count": 1059,
+        "season": "春"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "≤3级",
+        "count": 655,
+        "season": "秋"
+      },
+      {
+        "direction": "西北风",
+        "force": "3-4级",
+        "count": 38,
+        "season": "春"
+      },
+      {
+        "direction": "西北风",
+        "force": "≤3级",
+        "count": 13,
+        "season": "夏"
+      },
+      {
+        "direction": "西北风",
+        "force": "≤3级",
+        "count": 50,
+        "season": "春"
+      },
+      {
+        "direction": "西北风",
+        "force": "≤3级",
+        "count": 65,
+        "season": "秋"
+      },
+      {
+        "direction": "西南风",
+        "force": "≤3级",
+        "count": 40,
+        "season": "春"
+      },
+      {
+        "direction": "西南风",
+        "force": "≤3级",
+        "count": 39,
+        "season": "秋"
+      },
+      {
+        "direction": "西风",
+        "force": "3-4级",
+        "count": 13,
+        "season": "夏"
+      },
+      {
+        "direction": "西风",
+        "force": "3-4级",
+        "count": 12,
+        "season": "春"
+      },
+      {
+        "direction": "西风",
+        "force": "3-4级",
+        "count": 13,
+        "season": "秋"
+      },
+      {
+        "direction": "西风",
+        "force": "≤3级",
+        "count": 12,
+        "season": "春"
+      },
+      {
+        "direction": "西风",
+        "force": "≤3级",
+        "count": 13,
+        "season": "秋"
+      }
+    ],
+    "above30": [
+      {
+        "direction": "东北风",
+        "force": "≤3级",
+        "count": 65,
+        "season": "夏"
+      },
+      {
+        "direction": "东北风",
+        "force": "≤3级",
+        "count": 39,
+        "season": "春"
+      },
+      {
+        "direction": "东风",
+        "force": "≤3级",
+        "count": 52,
+        "season": "夏"
+      },
+      {
+        "direction": "东风",
+        "force": "≤3级",
+        "count": 25,
+        "season": "春"
+      },
+      {
+        "direction": "北风",
+        "force": "≤3级",
+        "count": 118,
+        "season": "夏"
+      },
+      {
+        "direction": "北风",
+        "force": "≤3级",
+        "count": 38,
+        "season": "春"
+      },
+      {
+        "direction": "南风",
+        "force": "≤3级",
+        "count": 12,
+        "season": "春"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "≤3级",
+        "count": 1258,
+        "season": "夏"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "≤3级",
+        "count": 168,
+        "season": "春"
+      },
+      {
+        "direction": "无持续风向",
+        "force": "≤3级",
+        "count": 51,
+        "season": "秋"
+      },
+      {
+        "direction": "西北风",
+        "force": "3-4级",
+        "count": 11,
+        "season": "春"
+      },
+      {
+        "direction": "西北风",
+        "force": "≤3级",
+        "count": 13,
+        "season": "春"
+      },
+      {
+        "direction": "西南风",
+        "force": "3-4级",
+        "count": 12,
+        "season": "春"
+      },
+      {
+        "direction": "西风",
+        "force": "3-4级",
+        "count": 12,
+        "season": "夏"
+      },
+      {
+        "direction": "西风",
+        "force": "≤3级",
+        "count": 13,
+        "season": "夏"
+      }
+    ]
+  }
+}

@@ -1,0 +1,86 @@
+{
+    "day": {
+        "above30": {
+            "cloudy": 123,
+            "sunny": 56,
+            "overcast": 37,
+            "rainy": 24,
+            "snow": 0,
+            "haze": 0
+        },
+        "30-20": {
+            "cloudy": 99,
+            "sunny": 69,
+            "overcast": 52,
+            "rainy": 93,
+            "snow": 0,
+            "haze": 0
+        },
+        "20-10": {
+            "cloudy": 69,
+            "sunny": 51,
+            "overcast": 34,
+            "rainy": 44,
+            "snow": 0,
+            "haze": 0
+        },
+        "10-0": {
+            "cloudy": 64,
+            "sunny": 49,
+            "overcast": 64,
+            "rainy": 17,
+            "snow": 19,
+            "haze": 1
+        },
+        "below0": {
+            "cloudy": 0,
+            "sunny": 1,
+            "overcast": 1,
+            "rainy": 0,
+            "snow": 0,
+            "haze": 0
+        }
+    },
+    "night": {
+        "above30": {
+            "cloudy": 0,
+            "sunny": 0,
+            "overcast": 0,
+            "rainy": 0,
+            "snow": 0,
+            "haze": 0
+        },
+        "30-20": {
+            "cloudy": 87,
+            "sunny": 42,
+            "overcast": 54,
+            "rainy": 53,
+            "snow": 0,
+            "haze": 0
+        },
+        "20-10": {
+            "cloudy": 101,
+            "sunny": 74,
+            "overcast": 63,
+            "rainy": 68,
+            "snow": 0,
+            "haze": 0
+        },
+        "10-0": {
+            "cloudy": 75,
+            "sunny": 80,
+            "overcast": 72,
+            "rainy": 31,
+            "snow": 4,
+            "haze": 1
+        },
+        "below0": {
+            "cloudy": 66,
+            "sunny": 50,
+            "overcast": 37,
+            "rainy": 0,
+            "snow": 9,
+            "haze": 0
+        }
+    }
+}

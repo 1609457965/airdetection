@@ -1,0 +1,2 @@
+use_sequences=True
+sequence_length=12
